@@ -1,0 +1,210 @@
+:root {
+  --bg-color: #f4f7fb;
+  --card-color: #ffffff;
+  --text-color: #1f2937;
+  --muted-color: #6b7280;
+  --border-color: #dbe3ee;
+  --primary-color: #2563eb;
+  --primary-hover: #1d4ed8;
+  --danger-color: #dc2626;
+  --danger-hover: #b91c1c;
+  --success-color: #16a34a;
+  --success-hover: #15803d;
+  --shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  --radius: 18px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.todo-card {
+  width: 100%;
+  max-width: 700px;
+  background-color: var(--card-color);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2rem;
+}
+
+.app-header h1 {
+  margin: 0 0 0.5rem 0;
+  font-size: 2rem;
+}
+
+.app-header p {
+  margin: 0 0 1.5rem 0;
+  color: var(--muted-color);
+}
+
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.todo-form label {
+  font-weight: bold;
+}
+
+.input-group {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.input-group input {
+  flex: 1;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.input-group button {
+  border: none;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.9rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.input-group button:hover,
+.input-group button:focus {
+  background-color: var(--primary-hover);
+}
+
+.error-message {
+  min-height: 1.2rem;
+  margin: 0;
+  color: var(--danger-color);
+  font-size: 0.95rem;
+}
+
+.todo-info {
+  margin: 1.25rem 0 1rem 0;
+  font-weight: bold;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.task-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background-color: #fafcff;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex: 1;
+}
+
+.task-text {
+  margin: 0;
+  word-break: break-word;
+}
+
+.task-item.completed .task-text {
+  text-decoration: line-through;
+  color: var(--muted-color);
+}
+
+/* Se usa .task-item.completed .task-text
+   para que la tarea completada tenga más especificidad
+   que el estilo general de .task-text */
+.status-btn,
+.delete-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 0.65rem 0.9rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.status-btn {
+  background-color: var(--success-color);
+  color: white;
+  margin-right: 0.5rem;
+}
+
+.status-btn:hover,
+.status-btn:focus {
+  background-color: var(--success-hover);
+}
+
+.delete-btn {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.delete-btn:hover,
+.delete-btn:focus {
+  background-color: var(--danger-hover);
+}
+
+.task-actions {
+  display: flex;
+  align-items: center;
+}
+
+.empty-state {
+  text-align: center;
+  color: var(--muted-color);
+  padding: 1rem 0;
+}
+
+@media (max-width: 640px) {
+  .todo-card {
+    padding: 1.25rem;
+  }
+
+  .input-group {
+    flex-direction: column;
+  }
+
+  .task-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .task-actions {
+    justify-content: flex-end;
+  }
+}
