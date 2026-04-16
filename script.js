@@ -38,16 +38,33 @@ function renderTasks() {
 
     if (task.completed) {
       taskItem.classList.add("completed");
+    } else {
+      taskItem.classList.add("pending");
     }
 
     const taskContent = document.createElement("div");
     taskContent.classList.add("task-content");
 
+    const taskTextContainer = document.createElement("div");
+    taskTextContainer.classList.add("task-text-container");
+
     const taskText = document.createElement("p");
     taskText.classList.add("task-text");
     taskText.textContent = task.text;
 
-    taskContent.append(taskText);
+    const taskStatus = document.createElement("span");
+    taskStatus.classList.add("task-status");
+
+    if (task.completed) {
+      taskStatus.classList.add("status-completed");
+      taskStatus.textContent = "Completada";
+    } else {
+      taskStatus.classList.add("status-pending");
+      taskStatus.textContent = "Pendiente";
+    }
+
+    taskTextContainer.append(taskText, taskStatus);
+    taskContent.append(taskTextContainer);
 
     const actions = document.createElement("div");
     actions.classList.add("task-actions");
@@ -100,7 +117,6 @@ function toggleTask(taskId) {
         completed: !task.completed
       };
     }
-
     return task;
   });
 
